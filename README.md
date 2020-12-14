@@ -8,7 +8,7 @@ A simple laravel package to generate side menu for admin dashboard, with permiss
 
 ```bash
 
-composer require philipjuguna/menu-generator
+composer require philipnjuguna/menu-generator
 ```
 
 
