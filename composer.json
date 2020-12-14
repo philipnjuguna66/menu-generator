@@ -22,7 +22,7 @@
                 "PhilipNjuguna\\MenuGenerator\\MenuGeneratorServiceProvider"
             ],
             "aliases": {
-                "Menu": "PhilipNjuguna\\MenuGenerator\\MenuGeneratorServiceFacade"
+                "Menu": "PhilipNjuguna\\MenuGenerator\\MenuGeneratorFacade"
             }
         }
     }
