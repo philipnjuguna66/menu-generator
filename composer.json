@@ -1,6 +1,6 @@
 {
     "name": "philipnjuguna/menu-generator",
-    "description": "A simple package to generate sidebar for admin dashboard",
+    "description": "A simple package to generate sidebar for admin dashboard, preset for adminLte",
     "type": "library",
     "license": "MIT",
     "authors": [
