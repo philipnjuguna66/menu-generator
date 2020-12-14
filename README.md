@@ -1,6 +1,12 @@
 # menu-generator
 
-<a href="https://packagist.org/packages/philipnjuguna/menu-generator"><img src="https://img.shields.io/packagist/dt/philipnjuguna/menu-generator" alt="Total Downloads"></a>
+<p align="center">
+
+<a href="https://packagist.org/packages//philipnjuguna/menu-generator"><img src="https://img.shields.io/github/issues/philipnjuguna66/menu-generator" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages//philipnjuguna/menu-generator"><img src="https://img.shields.io/packagist/dt/philipnjuguna/menu-generator?color=green" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/philipnjuguna/menu-generator"><img src="https://img.shields.io/packagist/v/philipnjuguna/menu-generator" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages//philipnjuguna/menu-generator"><img src="https://img.shields.io/packagist/l/philipnjuguna/menu-generator" alt="License"></a>
+</p>
 
 A simple laravel package to generate side menu for admin dashboard, with permission
 
