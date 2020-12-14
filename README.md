@@ -1,5 +1,7 @@
 # menu-generator
 
+<a href="https://packagist.org/packages/philipjuguna/menu-generator"><img src="https://img.shields.io/packagist/dt/philipjuguna/menu-generator" alt="Total Downloads"></a>
+
 A simple laravel package to generate side menu for admin dashboard, with permission
 
 ####Already preset with adminLte  stylesheet
