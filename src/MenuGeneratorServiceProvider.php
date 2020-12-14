@@ -18,7 +18,7 @@ class MenuGeneratorServiceProvider extends ServiceProvider
         parent::register();
 
         $this->app->singleton('Menu', function ($app) {
-            return MenuGenerator::build();
+            return Menu::build();
         });
     }
 
