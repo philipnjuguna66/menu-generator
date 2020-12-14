@@ -20,12 +20,10 @@ composer require philipjuguna/menu-generator
 Example 
 ```
  {!!
-       Menu::module('Manage Clients', ['browse_clients'])
+       Menu::module('Manage Clients', ['view_clients'])
                 ->section('client')
                 ->icon('fa fa-user')
-                ->menu('Client', route('client.index'),'browse_clients')
-                ->menu('Advocate Clients', route('sale.advocate.index'),'advocate_clients')
-                ->menu('Title Transfer Process', route('transfer.index'),'browse_clients')
+                ->menu('Clients', route('client.index'),'browse_clients')
                 ->output()
        !!}
 ```
