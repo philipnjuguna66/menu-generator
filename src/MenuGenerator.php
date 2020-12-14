@@ -126,6 +126,7 @@ abstract class MenuGenerator
 
     protected function showComponent($permission): bool
     {
+
         return auth()->user()->can($permission);
     }
 

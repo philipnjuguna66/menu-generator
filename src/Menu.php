@@ -57,6 +57,7 @@ class Menu extends MenuGenerator
                 <?php
                 foreach ($this->subModuleMenu as $key => $menu) {
                     if ($this->showComponent($menu['permission'])) {
+
                         ?>
                         <li class="<?php echo $this->getActiveRoute($menu['uri']) ? "active" : '' ?>">
                             <a href="<?= Str::ucfirst(Str::lower($menu['uri'])) ?>">
@@ -86,32 +87,31 @@ class Menu extends MenuGenerator
         <ul class="treeview-menu <?php echo getActiveParentRoute($this->section) ? "active" : '' ?>"">
         <?php
         foreach ($this->menu as $key => $menu) {
+
+            if (is_null($this->subModuleAfter) )
+            {
+                echo $this->subModuleComponents();
+                /**
+                 * CLEAR SUBMODULE SECTION
+                 */
+                $this->clearSubModuleSectionForNextItem();
+
+            }
+
+
+
+            if (! is_null($this->subModuleAfter) && strtolower($this->subModuleAfter) == strtolower($key) )
+            {
+
+                echo $this->subModuleComponents();
+                /**
+                 * CLEAR SUBMODULE SECTION
+                 */
+                $this->clearSubModuleSectionForNextItem();
+
+            }
+
             if ($this->showComponent($menu['permission'])) {
-
-                if (is_null($this->subModuleAfter) )
-                {
-                    echo $this->subModuleComponents();
-                    /**
-                     * CLEAR SUBMODULE SECTION
-                     */
-                    $this->clearSubModuleSectionForNextItem();
-
-                }
-
-
-
-                if (! is_null($this->subModuleAfter) && strtolower($this->subModuleAfter) == strtolower($key) )
-                {
-
-                    echo $this->subModuleComponents();
-                    /**
-                     * CLEAR SUBMODULE SECTION
-                     */
-                    $this->clearSubModuleSectionForNextItem();
-
-                }
-
-
                 ?>
                 <li class="<?php echo $this->getActiveRoute($menu['uri']) ? "active" : '' ?>">
                     <a href="<?= Str::ucfirst(Str::lower($menu['uri'])) ?>">
