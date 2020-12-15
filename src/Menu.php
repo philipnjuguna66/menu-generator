@@ -47,7 +47,7 @@ class Menu extends MenuGenerator
 
         if (!is_null($this->subModule) && auth()->user()->can($this->subModulePermission)) {
             ?>
-            <li class="treeview  <?php echo $this->getActiveParentRoute($this->section) ? "active" : '' ?>"">
+            <li class="treeview  <?php echo $this->getActiveParentRoute($this->section) ? "active" : '' ?>">
             <a href="#"><i class="fa fa-circle-o"></i> <?= $this->subModule ?>
                 <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
@@ -84,7 +84,7 @@ class Menu extends MenuGenerator
 
         ?>
 
-        <ul class="treeview-menu <?php echo getActiveParentRoute($this->section) ? "active" : '' ?>"">
+        <ul class="treeview-menu <?php echo getActiveParentRoute($this->section) ? "active" : '' ?>">
         <?php
         foreach ($this->menu as $key => $menu) {
 
