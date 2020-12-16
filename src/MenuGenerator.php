@@ -89,7 +89,7 @@ abstract class MenuGenerator
         return $this;
     }
 
-    public function menu(string $name, string $uri, string $permission)
+    public function menu(string $name, string $uri,  $permission)
     {
         $this->menu[$name] = [
             'uri' => $uri,
@@ -119,16 +119,28 @@ abstract class MenuGenerator
         return $this;
     }
 
+
     protected function showModule(): bool
     {
+        if (in_array(true, $this->modulePermission))
+        {
+            return true;
+        }
         return Gate::any($this->modulePermission);
     }
 
     protected function showComponent($permission): bool
     {
 
+        if ($permission == true)
+        {
+            return  true;
+        }
+
         return auth()->user()->can($permission);
     }
+
+
 
     abstract protected function htmlModule();
     abstract  protected function subModuleComponents();

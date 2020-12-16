@@ -84,7 +84,7 @@ class Menu extends MenuGenerator
 
         ?>
 
-        <ul class="treeview-menu <?php echo getActiveParentRoute($this->section) ? "active" : '' ?>">
+        <ul class="treeview-menu <?php echo $this->getActiveParentRoute($this->section) ? "active" : '' ?>">
         <?php
         foreach ($this->menu as $key => $menu) {
 
