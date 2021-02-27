@@ -10,7 +10,6 @@
         }
     ],
     "minimum-stability": "stable",
-    "require": {},
     "autoload": {
         "psr-4": {
             "PhilipNjuguna\\MenuGenerator\\" : "src/"
@@ -25,5 +24,8 @@
                 "Menu": "PhilipNjuguna\\MenuGenerator\\MenuGeneratorFacade"
             }
         }
+    },
+    "require-dev": {
+        "orchestra/canvas": "^6.1"
     }
 }
