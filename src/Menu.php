@@ -4,6 +4,7 @@
 namespace PhilipNjuguna\MenuGenerator;
 
 
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Str;
 
 class Menu extends MenuGenerator
@@ -134,16 +135,19 @@ class Menu extends MenuGenerator
     {
         ob_start();
 
-        ?>
-        <li class="<?= $this->getActiveRoute($this->uri) ? "active" : '' ?>">
-            <a href="<?= $this->uri ?>">
-                <i class="menu-icon <?= $this->icon ?>"></i>
-                <span><?= $this->module ?></span>
-            </a>
-        </li>
+        if (Gate::any($this->modulePermission)) {
 
-        <?php
 
+            ?>
+            <li class="<?= $this->getActiveRoute($this->uri) ? "active" : '' ?>">
+                <a href="<?= $this->uri ?>">
+                    <i class="menu-icon <?= $this->icon ?>"></i>
+                    <span><?= $this->module ?></span>
+                </a>
+            </li>
+
+            <?php
+        }
         return ob_get_clean();
     }
 
