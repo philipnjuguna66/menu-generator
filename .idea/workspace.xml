@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="73693c53-febe-4697-875a-292ca7ca8f3a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="73693c53-febe-4697-875a-292ca7ca8f3a" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -76,6 +74,7 @@
       <workItem from="1611319883733" duration="363000" />
       <workItem from="1614360999381" duration="1584000" />
       <workItem from="1614672682489" duration="1000" />
+      <workItem from="1614672864845" duration="40000" />
     </task>
     <task id="LOCAL-00001" summary="-remove true from side menu abstrack class">
       <created>1614361043980</created>
@@ -98,7 +97,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614438984958</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="-update check permission for without children components">
+      <created>1614672892220</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1614672892220</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -106,6 +112,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="-remove true from side menu abstrack class" />
-    <option name="LAST_COMMIT_MESSAGE" value="-remove true from side menu abstrack class" />
+    <MESSAGE value="-update check permission for without children components" />
+    <option name="LAST_COMMIT_MESSAGE" value="-update check permission for without children components" />
   </component>
 </project>

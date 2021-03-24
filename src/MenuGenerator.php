@@ -122,20 +122,11 @@ abstract class MenuGenerator
 
     protected function showModule(): bool
     {
-        if (in_array(true, $this->modulePermission))
-        {
-            return true;
-        }
         return Gate::any($this->modulePermission);
     }
 
     protected function showComponent($permission): bool
     {
-
-        if ($permission == true)
-        {
-            return  true;
-        }
 
         return auth()->user()->can($permission);
     }
