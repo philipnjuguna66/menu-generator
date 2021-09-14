@@ -19,6 +19,7 @@ abstract class MenuGenerator
     protected $subModulePermission;
     protected $subModuleAfter;
 
+    protected array $submoduleItems = [];
 
 
     public function outputChildrenItems()
@@ -32,13 +33,22 @@ abstract class MenuGenerator
 
     public function output()
     {
-        if (sizeof($this->menu) < 1) {
+
+        if (sizeof($this->menu) < 1 && ! sizeof($this->submoduleItems) ) {
+
+
 
             $output = $this->sectionWithoutChildren();
 
-        } else {
+        }
+
+        else {
+
+
             $output = $this->htmlModule();
         }
+
+
         $this->clearSectionForNextItem();
 
         return $output;

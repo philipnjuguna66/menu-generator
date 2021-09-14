@@ -10,7 +10,6 @@ use Illuminate\Support\Str;
 class Menu extends MenuGenerator
 {
 
-    private array $submoduleItems = [];
 
     public static function build()
     {
@@ -116,54 +115,54 @@ class Menu extends MenuGenerator
 
     protected function htmlComponent(): string
     {
+
         ob_start();
 
         ?>
 
         <ul class="treeview-menu <?php echo $this->getActiveParentRoute($this->section) ? "active" : '' ?>">
             <?php
+            if (sizeof($this->submoduleItems) )
+            {
+                echo $this->subModuleComponents();
+
+            }
+
             foreach ($this->menu as $key => $menu) {
 
 
 
 
-                if (sizeof($this->submoduleItems) )
-                {
-                    echo $this->subModuleComponents();
+                echo $this->outPutSingleItem($menu , $key);
 
-
-
-                }
-
-
-
-                if (! is_null($this->subModuleAfter) && strtolower($this->subModuleAfter) == strtolower($key) )
-                {
-
-                    echo $this->subModuleComponents();
-
-
-                }
-
-                if ($this->showComponent($menu['permission'])) {
-                    ?>
-                    <li class="<?php echo $this->getActiveRoute($menu['uri']) ? "active" : '' ?>">
-                        <a href="<?= Str::ucfirst(Str::lower($menu['uri'])) ?>">
-                            <i class="fa fa-circle-o"></i>
-                            <?= Str::ucfirst(Str::lower($key)) ?>
-                        </a>
-                    </li>
-                    <?php
-                }
             }
             ?>
         </ul>
         <?php
 
+
         return ob_get_clean();
 
     }
 
+
+    private function  outPutSingleItem( $menu , $key)
+    {
+        ob_start();
+
+        if ($this->showComponent($menu['permission'])) {
+            ?>
+            <li class="<?php echo $this->getActiveRoute($menu['uri']) ? "active" : '' ?>">
+                <a href="<?= Str::ucfirst(Str::lower($menu['uri'])) ?>">
+                    <i class="fa fa-circle-o"></i>
+                    <?= Str::ucfirst(Str::lower($key)) ?>
+                </a>
+            </li>
+            <?php
+        }
+
+        return ob_get_clean();
+    }
     protected function sectionWithoutChildren()
     {
         ob_start();
