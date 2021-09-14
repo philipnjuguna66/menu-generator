@@ -21,6 +21,15 @@ abstract class MenuGenerator
 
 
 
+    public function outputChildrenItems()
+    {
+
+        $this->clearSubModuleSectionForNextItem();
+
+        return $this;
+    }
+
+
     public function output()
     {
         if (sizeof($this->menu) < 1) {
