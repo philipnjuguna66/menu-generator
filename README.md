@@ -37,6 +37,37 @@ Example
 ```
 
 
+###Menu with level two is generated like below
+
+```
+  {!!
+           Menu::module('Menu Item', ['array_of_permissions'])
+                ->section('section')
+                ->icon('fa fa-area-chart')
+                ->subModules([[
+                        "name"  => "Child 1",
+                        "permission" => 'child_1_permissions',
+                        "children" => [
+                                        ["item" => "Expense ", "uri" => route('expenses.index') , "permission" =>"create_expenses"],
+                                        ["item" => "category ", "uri" => route('category.index') , "permission" =>"create_category"],
+                                       
+                                 ],
+                        ],
+                        [
+                        "name"  => "Purchases",
+                        "permission" => 'show_requisition_account',
+                        "children" => [
+                                        ["item" => "Vendor", "uri" => route('vendor.index') , "permission" => "show_vendors"],
+                                        ["item" => "Bills", "uri" => route('bill.index') , "permission" =>"show_bills"],
+                                        ["item" => "Make Payments", "uri" => route('make_payment.index') , "permission" =>"make_payments"],
+                                 ],
+                        ],
+                        ])
+                        ->output()
+       !!}
+
+
+```
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
