@@ -10,11 +10,21 @@ use Illuminate\Support\Str;
 class Menu extends MenuGenerator
 {
 
+    private array $submoduleItems = [];
+
     public static function build()
     {
         return (new self());
     }
 
+    public function subModules(array $submodules)
+    {
+        $this->submoduleItems = $submodules;
+
+
+
+        return $this;
+    }
     protected function htmlModule(): string
     {
         ob_start();
@@ -42,39 +52,64 @@ class Menu extends MenuGenerator
 
     }
 
+    public function endSubModule(){
+
+
+
+
+        return $this;
+    }
+
     protected function subModuleComponents()
     {
         ob_start();
 
-        if (!is_null($this->subModule) && auth()->user()->can($this->subModulePermission)) {
-            ?>
-            <li class="treeview  <?php echo $this->getActiveParentRoute($this->section) ? "active" : '' ?>">
-            <a href="#"><i class="fa fa-circle-o"></i> <?= $this->subModule ?>
-                <span class="pull-right-container">
+
+        foreach ($this->submoduleItems as $submodule)
+        {
+
+
+
+            if (Gate::any($submodule['permission']))
+            {
+                ?>
+                <li class="treeview">
+                <a href="#"><i class="fa fa-circle-o"></i> <?= $submodule['name'] ?>
+                    <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
-            </a>
-            <ul class="treeview-menu  ">
-                <?php
-                foreach ($this->subModuleMenu as $key => $menu) {
-                    if ($this->showComponent($menu['permission'])) {
-
+                </a>
+                <ul class="treeview-menu ">
+                    <?php
+                    foreach ($submodule['children'] as $child)
+                    {
                         ?>
-                        <li class="<?php echo $this->getActiveRoute($menu['uri']) ? "active" : '' ?>">
-                            <a href="<?= Str::ucfirst(Str::lower($menu['uri'])) ?>">
+                        <li class="<?php echo $this->getActiveRoute($child['uri']) ? "active" : '' ?>">
+                            <a href="<?= Str::ucfirst(Str::lower($child['uri'])) ?>">
                                 <i class="fa fa-circle-o"></i>
-                                <?= Str::ucfirst(Str::lower($key)) ?>
+                                <?= Str::ucfirst(Str::lower($child['item'])) ?>
                             </a>
                         </li>
                         <?php
-                    }
-                }
-                ?>
-            </ul>
-            </li>
 
+
+                        ?>
+
+                        <?php
+                    }
+                    ?>
+                </ul>
+
+                <?php
+            }
+            ?>
+            </li>
             <?php
+
         }
+
+
+        $this->submoduleItems = [];
 
         return ob_get_clean();
     }
@@ -86,44 +121,42 @@ class Menu extends MenuGenerator
         ?>
 
         <ul class="treeview-menu <?php echo $this->getActiveParentRoute($this->section) ? "active" : '' ?>">
-        <?php
-        foreach ($this->menu as $key => $menu) {
+            <?php
+            foreach ($this->menu as $key => $menu) {
 
-            if (is_null($this->subModuleAfter) )
-            {
-                echo $this->subModuleComponents();
-                /**
-                 * CLEAR SUBMODULE SECTION
-                 */
-                $this->clearSubModuleSectionForNextItem();
 
+
+
+                if (sizeof($this->submoduleItems) )
+                {
+                    echo $this->subModuleComponents();
+
+
+
+                }
+
+
+
+                if (! is_null($this->subModuleAfter) && strtolower($this->subModuleAfter) == strtolower($key) )
+                {
+
+                    echo $this->subModuleComponents();
+
+
+                }
+
+                if ($this->showComponent($menu['permission'])) {
+                    ?>
+                    <li class="<?php echo $this->getActiveRoute($menu['uri']) ? "active" : '' ?>">
+                        <a href="<?= Str::ucfirst(Str::lower($menu['uri'])) ?>">
+                            <i class="fa fa-circle-o"></i>
+                            <?= Str::ucfirst(Str::lower($key)) ?>
+                        </a>
+                    </li>
+                    <?php
+                }
             }
-
-
-
-            if (! is_null($this->subModuleAfter) && strtolower($this->subModuleAfter) == strtolower($key) )
-            {
-
-                echo $this->subModuleComponents();
-                /**
-                 * CLEAR SUBMODULE SECTION
-                 */
-                $this->clearSubModuleSectionForNextItem();
-
-            }
-
-            if ($this->showComponent($menu['permission'])) {
-                ?>
-                <li class="<?php echo $this->getActiveRoute($menu['uri']) ? "active" : '' ?>">
-                    <a href="<?= Str::ucfirst(Str::lower($menu['uri'])) ?>">
-                        <i class="fa fa-circle-o"></i>
-                        <?= Str::ucfirst(Str::lower($key)) ?>
-                    </a>
-                </li>
-                <?php
-            }
-        }
-        ?>
+            ?>
         </ul>
         <?php
 
