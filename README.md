@@ -10,7 +10,7 @@
 
 A simple laravel package to generate side menu for admin dashboard, with permission
 
-##Already preset with adminLte  stylesheet
+### Already preset with adminLte  stylesheet
 
 ## Installation
 
@@ -22,7 +22,7 @@ composer require philipnjuguna/menu-generator:dev-main
 
 
 
-##Menu will be generated like below:
+### Menu will be generated like below:
 
 
 Example 
@@ -37,7 +37,7 @@ Example
 ```
 
 
-##Menu with level two is generated like below
+### Menu with level two is generated like below
 
 ```
   {!!
