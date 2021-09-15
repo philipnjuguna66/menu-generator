@@ -68,14 +68,16 @@ class Menu extends MenuGenerator
         {
 
 
-
             if (Gate::any($submodule['permission']))
             {
+
+
                 ?>
-                <li class="treeview">
+
+                <li class="treeview <?php echo $this->getActiveParentRoute($submodule['name'] ) ? "active" : '' ?>">
                 <a href="#"><i class="fa fa-circle-o"></i> <?= $submodule['name'] ?>
                     <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
+                        <i class="fa fa-angle-left pull-right"> </i>
                     </span>
                 </a>
                 <ul class="treeview-menu ">
@@ -168,7 +170,6 @@ class Menu extends MenuGenerator
         ob_start();
 
         if (Gate::any($this->modulePermission)) {
-
 
             ?>
             <li class="<?= $this->getActiveRoute($this->uri) ? "active" : '' ?>">

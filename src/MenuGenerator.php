@@ -159,13 +159,15 @@ abstract class MenuGenerator
 
     protected function getActiveParentRoute($prefix = null)
     {
-        return  Str::contains(url()->current() , $prefix);
+
+
+        return  Str::contains(url()->current() , Str::lower($prefix));
 
     }
 
     protected function getActiveRoute($route)
     {
-        return Str::contains(url()->current() , $route) ? "active" : "";
+        return Str::contains(url()->current() , $route) ;
     }
 
 }
